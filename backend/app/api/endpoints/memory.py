@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from typing import Any, List
 
-# Use relative imports when running from app directory
-from core.database import memories_collection
-from schemas.memory import MemoryCreate, MemoryUpdate, MemoryResponse, MemoryType
-from api.endpoints.dependencies import get_current_active_user
-from models.memory import MemoryModel
+# Use absolute imports when running as a module
+from app.core.database import memories_collection
+from app.schemas.memory import MemoryCreate, MemoryUpdate, MemoryResponse, MemoryType
+from app.api.endpoints.dependencies import get_current_active_user
+from app.models.memory import MemoryModel
 from bson import ObjectId
 from datetime import datetime
 

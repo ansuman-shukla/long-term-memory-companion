@@ -1,0 +1,174 @@
+.chat-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-container {
+  display: flex;
+  height: calc(100vh - 60px); /* Adjust for navbar height */
+  overflow: hidden;
+  position: fixed;
+  top: 60px; /* Navbar height */
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.chat-sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--color-gray);
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 60px; /* Navbar height */
+  bottom: 0;
+  overflow-y: hidden;
+}
+
+.chat-main {
+  position: fixed;
+  left: 250px; /* Width of chat sidebar */
+  right: 0; /* Default to full width when memory manager is hidden */
+  top: 60px; /* Navbar height */
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+}
+
+/* When memory manager is shown, adjust chat-main width */
+.memory-manager-visible .chat-main {
+  right: 300px; /* Width of memory sidebar */
+}
+
+.memory-sidebar {
+  width: 300px;
+  border-left: 2px solid var(--color-primary);
+  background-color: var(--color-bg);
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 60px; /* Navbar height */
+  bottom: 0;
+  overflow-y: hidden; /* Hide the scrollbar */
+  z-index: 20;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header {
+  background-color: var(--color-bg);
+  padding: 0.75rem;
+  height: 60px; /* Fixed height */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.chat-title {
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.chat-messages {
+  position: absolute;
+  top: 60px; /* Header height */
+  bottom: 100px; /* Input height */
+  left: 0;
+  right: 0;
+  overflow-y: auto; /* Only this area should scroll */
+  padding: 1rem;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--color-primary) var(--color-bg); /* Firefox */
+}
+
+/* Custom scrollbar for Chrome, Safari and Opera */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-bg);
+}
+
+.empty-chat, .no-session-selected, .loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--color-light-gray);
+  text-align: center;
+  padding: 2rem;
+}
+
+.memory-toggle-btn {
+  margin: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .chat-container {
+    position: relative;
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+
+  .chat-sidebar {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    overflow-y: auto;
+    border: none;
+    border-bottom: 2px solid var(--color-gray);
+  }
+
+  .memory-sidebar {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    overflow-y: hidden; /* Keep consistent with desktop view */
+    border: none;
+    border-bottom: 2px solid var(--color-gray);
+  }
+
+  .chat-main {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .chat-messages {
+    position: relative;
+    height: calc(100% - 160px);
+    top: auto;
+    bottom: auto;
+  }
+
+  .chat-header {
+    position: relative;
+  }
+}

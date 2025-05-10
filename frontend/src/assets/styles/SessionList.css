@@ -1,0 +1,85 @@
+.session-list-container {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  height: calc(100% - 50px); /* Adjust for the memory toggle button */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.session-list-title {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.session-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  max-height: calc(100% - 100px); /* Adjust for title and buttons */
+}
+
+.session-item {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--color-gray);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.session-item:hover {
+  border-color: var(--color-primary);
+}
+
+.session-item.active {
+  border-color: var(--color-primary);
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.session-name {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.session-date {
+  font-size: 0.8rem;
+  color: var(--color-light-gray);
+}
+
+.session-delete-btn {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.no-sessions {
+  text-align: center;
+  color: var(--color-light-gray);
+  padding: 1rem;
+}
+
+.new-session-btn {
+  width: 100%;
+}
+
+.new-session-form {
+  margin-top: 0.5rem;
+}
+
+.new-session-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.new-session-actions button {
+  flex: 1;
+}

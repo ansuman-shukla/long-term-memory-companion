@@ -1,0 +1,40 @@
+.chat-input-container {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px; /* Fixed height */
+  z-index: 10;
+}
+
+/* Removed reasoning option */
+
+.chat-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input {
+  flex: 1;
+  min-height: 60px;
+  max-height: 150px;
+  padding: 0.5rem;
+  border: 2px solid var(--color-gray);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  resize: vertical;
+}
+
+.chat-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.send-button {
+  align-self: flex-end;
+  height: 40px;
+  min-width: 60px;
+}

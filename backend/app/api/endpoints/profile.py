@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Any
 
-# Use relative imports when running from app directory
-from core.security import get_password_hash
-from core.database import users_collection
-from schemas.user import UserUpdate, UserResponse
-from api.endpoints.dependencies import get_current_active_user
+# Use absolute imports when running as a module
+from app.core.security import get_password_hash
+from app.core.database import users_collection
+from app.schemas.user import UserUpdate, UserResponse
+from app.api.endpoints.dependencies import get_current_active_user
 from bson import ObjectId
 from datetime import datetime, timezone
 

@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Any, List
 
-# Use relative imports when running from app directory
-from core.database import sessions_collection, chat_messages_collection
-from schemas.session import SessionCreate, SessionUpdate, SessionResponse
-from api.endpoints.dependencies import get_current_active_user
-from models.session import SessionModel
+# Use absolute imports when running as a module
+from app.core.database import sessions_collection, chat_messages_collection
+from app.schemas.session import SessionCreate, SessionUpdate, SessionResponse
+from app.api.endpoints.dependencies import get_current_active_user
+from app.models.session import SessionModel
 from bson import ObjectId
 from datetime import datetime, timezone
 

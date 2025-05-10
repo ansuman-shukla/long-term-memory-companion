@@ -1,15 +1,15 @@
-from datetime import timedelta
+from datetime import timedelta, datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Any
 
-# Use relative imports when running from app directory
-from core.security import verify_password, get_password_hash, create_access_token
-from core.config import settings
-from core.database import users_collection
-from schemas.user import UserCreate, UserResponse
-from schemas.token import Token
-from models.user import UserModel
+# Use absolute imports when running as a module
+from app.core.security import verify_password, get_password_hash, create_access_token
+from app.core.config import settings
+from app.core.database import users_collection
+from app.schemas.user import UserCreate, UserResponse
+from app.schemas.token import Token
+from app.models.user import UserModel
 from bson import ObjectId
 
 router = APIRouter()
@@ -52,7 +52,7 @@ async def register(user_data: UserCreate) -> Any:
 
     return created_user
 
-@router.post("/login", response_model=Token)
+@router.post("/login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
     """
     OAuth2 compatible token login, get an access token for future requests
@@ -73,4 +73,19 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
         subject=str(user["_id"]), expires_delta=access_token_expires
     )
 
-    return {"access_token": access_token, "token_type": "bearer"}
+    # Prepare user data for response
+    user_data = {
+        "id": str(user["_id"]),
+        "username": user["username"],
+        "email": user["email"],
+        "full_name": user["full_name"],
+        "is_active": user.get("is_active", True),
+        "created_at": user.get("created_at", datetime.now(timezone.utc))
+    }
+
+    # Return token and user data
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": user_data
+    }

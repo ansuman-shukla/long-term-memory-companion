@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Use relative imports when running from app directory
-from api.endpoints import auth, profile, session, memory, chat
-from core.config import settings
+# Use absolute imports when running as a module
+from app.api.endpoints import auth, profile, session, memory, chat
+from app.core.config import settings
 
 app = FastAPI(title=settings.PROJECT_NAME)
 

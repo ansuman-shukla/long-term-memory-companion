@@ -4,10 +4,10 @@ from jose import jwt, JWTError
 from typing import Optional
 from bson import ObjectId
 
-# Use relative imports when running from app directory
-from core.config import settings
-from core.database import users_collection
-from schemas.token import TokenPayload
+# Use absolute imports when running as a module
+from app.core.config import settings
+from app.core.database import users_collection
+from app.schemas.token import TokenPayload
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 

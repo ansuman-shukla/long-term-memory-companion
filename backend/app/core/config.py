@@ -18,12 +18,12 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: Optional[str] = None
 
     # Allow extra fields for environment variables
-    GOOGLE_API_KEY: str = "AIzaSyDb5JZuSD9KJykV0BFx-GFx6hEmWP9ZHfY"
-    MONGO_DB_CONNECTION_STRING: str = "mongodb+srv://ansuman-shukla:ansuman@cluster0.zkpcq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY")
+    MONGO_DB_CONNECTION_STRING: str = os.getenv("MONGO_DB_CONNECTION_STRING")
 
-    # Default LLM models
+    # Default LLM models - only using gemini-2.0-flash-lite
     DEFAULT_LLM_MODEL: str = "gemini-2.0-flash-lite" # Default model
-    REASONING_LLM_MODEL: str = "gemini-2.5-pro-preview-05-06" # Model for reasoning
+    REASONING_LLM_MODEL: str = "gemini-2.0-flash-lite" # Always use flash-lite
     NON_REASONING_LLM_MODEL: str = "gemini-2.0-flash-lite" # Default model
 
     class Config:

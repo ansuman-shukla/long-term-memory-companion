@@ -2,12 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from typing import Any, List, Optional
 import datetime
 
-# Use relative imports when running from app directory
-from core.database import chat_messages_collection, sessions_collection, memories_collection
-from schemas.chat import ChatMessageCreate, ChatMessageResponse, ChatHistoryResponse
-from api.endpoints.dependencies import get_current_active_user
-from models.chat import ChatMessageModel, MessageType
-from core.config import settings
+# Use absolute imports when running as a module
+from app.core.database import chat_messages_collection, sessions_collection, memories_collection
+from app.schemas.chat import ChatMessageCreate, ChatMessageResponse, ChatHistoryResponse
+from app.api.endpoints.dependencies import get_current_active_user
+from app.models.chat import ChatMessageModel, MessageType
+from app.core.config import settings
 from bson import ObjectId
 
 from langchain_google_genai import ChatGoogleGenerativeAI

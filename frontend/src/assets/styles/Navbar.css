@@ -1,0 +1,66 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-bg);
+  border-bottom: 2px solid var(--color-primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-family: 'Press Start 2P', var(--font-main);
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-item {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar-item:hover {
+  border-color: var(--color-primary);
+}
+
+.navbar-username {
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--color-gray);
+  border: 2px solid var(--color-primary);
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
